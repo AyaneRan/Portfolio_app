@@ -28,20 +28,21 @@ This app demonstrates essential Rails concepts such as MVC architecture, RESTful
 | Version Control | Git / GitHub |
 
 ---
+
 ## 📁 Structure Overview
 
 app/
 ├── controllers/
-│ ├── users_controller.rb
-│ ├── sessions_controller.rb
-│ ├── account_activations_controller.rb
-│ └── password_resets_controller.rb
-├── models/
-│ └── user.rb
-└── views/
-├── users/
-├── sessions/
-└── password_resets/
+│   ├── users_controller.rb
+│   ├── sessions_controller.rb
+│   ├── account_activations_controller.rb
+│   └── password_resets_controller.rb
+├   ── models/
+│   └── user.rb
+└   ── views/
+├   ── users/
+├   ── sessions/
+└   ── password_resets/
 
 ---
 
