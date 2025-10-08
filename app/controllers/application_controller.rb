@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include SessionsHelper
+
  def new; end
 
  def create
@@ -16,4 +18,16 @@ class ApplicationController < ActionController::Base
    session.delete(:user_id)
    redirect_to root_url, notice: "Logged out!"
   end
+  
+  private
+
+  def logged_in_user
+   unless logged_in?
+    store_location
+   flash[:danger] = "Please log in."
+   redirect_to login_url
+  end
 end
+end
+
+
