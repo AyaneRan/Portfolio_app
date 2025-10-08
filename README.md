@@ -31,6 +31,7 @@ This app demonstrates essential Rails concepts such as MVC architecture, RESTful
 
 ## 📁 Structure Overview
 
+```
 app/
 ├── controllers/
 │   ├── users_controller.rb
@@ -43,9 +44,7 @@ app/
 ├   ── users/
 ├   ── sessions/
 └   ── password_resets/
-
-
-
+```
 ---
 
 ## 🧩 Setup (Local)
