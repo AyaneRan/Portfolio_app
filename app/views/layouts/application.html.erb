@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Portfolio App" %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title><%= content_for(:title) || "Portfolio App" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <!-- CSS は application を読むのが正解 -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <%= yield :head %>
   </head>
+
   <body>
-    <!-- フラッシュ：end を忘れない！ -->
+    <body>
+  <!-- ナビバー（Bootstrap） -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+      <%= link_to "Portfolio App", (defined?(root_path) ? root_path : signup_path), class: "navbar-brand" %>
+
+      <div class="ms-auto d-flex gap-2">
+        <%= link_to "Sign up", signup_path, class: "btn btn-outline-primary" %>
+
+        <% if logged_in? %>
+          <%= link_to "Log out", logout_path,
+                      data: { turbo_method: :delete },
+                      class: "btn btn-outline-secondary" %>
+        <% else %>
+          <%= link_to "Log in", login_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
     <% flash.each do |key, message| %>
       <div class="alert alert-<%= %w[success notice].include?(key.to_s) ? "success" : "danger" %>">
         <%= message %>
       </div>
     <% end %>
+  </div>
 
+  <!-- ページ本体 -->
+  <div class="container">
     <%= yield %>
+  </div>
+</body>
   </body>
-</html
+</html>
+
