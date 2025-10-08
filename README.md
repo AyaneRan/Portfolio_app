@@ -43,6 +43,7 @@ app/
 ├── users/
 ├── sessions/
 └── password_resets/
+yaml
 
 
 ---
