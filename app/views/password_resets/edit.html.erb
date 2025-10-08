@@ -1,0 +1,19 @@
+<h1>new passowrd</h1>
+
+<%= form_with(model: @user, url: password_reset_path(params[:id]), local: true, data: { turbo: false }) do |f| %>
+    <%= hidden_field_tag :email, params[:email] %>
+
+    <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :password_confirmation, "Confirmation" %><br>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Update password" %>
+    </div>
+<% end %>

@@ -1,0 +1,13 @@
+<h1>password reset</h1>
+
+<%= form_with(url: password_resets_path, scope: :password_reset, local:true) do |f| %>
+
+    <div class="field">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Send password reset email" %>
+    </div>
+<% end %>
