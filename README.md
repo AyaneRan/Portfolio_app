@@ -28,7 +28,6 @@ This app demonstrates essential Rails concepts such as MVC architecture, RESTful
 | Version Control | Git / GitHub |
 
 ---
-
 ## 📁 Structure Overview
 
 app/
@@ -43,9 +42,6 @@ app/
 ├── users/
 ├── sessions/
 └── password_resets/
-
-
-
 
 ---
 
