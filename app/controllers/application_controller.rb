@@ -1,4 +1,19 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
+ def new; end
+
+ def create
+  user = User.find_by(email: params[:session][:email].downcase)
+   if user&.authenticate(params[:session][:password])
+    session[:user_id] = user.id
+    redirect_to user, notice: "Logged in!"
+   else
+    flash.now.alert = "Email or password is invalid"
+    render "new", status: :unprocessable_entity
+   end
+  end
+
+  def destroy
+   session.delete(:user_id)
+   redirect_to root_url, notice: "Logged out!"
+  end
 end
