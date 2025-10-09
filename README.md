@@ -91,7 +91,7 @@ DATABASE_URL=your_postgres_url
 Deploy完了後 →
 🌐 https://portfolio-app-keid.onrender.com
 
-🧠 What I Learned / 学んだこと
+## 🧠 What I Learned / 学んだこと
 
 Railsの認証機構（has_secure_password）を活用した安全なログイン設計
 
