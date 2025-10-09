@@ -60,12 +60,12 @@ rails server
 ```
 Access: 👉 http://localhost:3000
 
-💌 Email Preview (Development)
+## 💌 Email Preview (Development)
 
 Emails are previewed locally via letter_opener gem.
 When a user signs up or resets their password, the email content opens in the browser.
 
-🚀 Deployment (Render)
+## 🚀 Deployment (Render)
 
 Renderで「New → Web Service」を作成
 
@@ -103,7 +103,7 @@ Flashメッセージやバリデーションを通じたUX改善
 
 Renderへのデプロイ・環境変数設定の実践
 
-🌱 Future Plans / 今後の拡張
+## 🌱 Future Plans / 今後の拡張
 
  Micropost（つぶやき投稿）機能
 
@@ -115,13 +115,13 @@ Renderへのデプロイ・環境変数設定の実践
 
  簡易テスト（RSpec / Minitest）導入
 
-👤 Author
+## 👤 Author
 
 Hina
 Independent developer focused on efficient learning & continuous growth.
 📎 GitHub Profile
 
-📝 License
+## 📝 License
 
 MIT License
 
