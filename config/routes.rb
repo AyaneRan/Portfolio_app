@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get    "/login",  to: "sessions#new"
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   resources :users
   resources :password_resets, only: %i[new create edit update]
