@@ -63,10 +63,6 @@ group :development, :test do
   gem "letter_opener_web"
 end
 
-if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
-
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
