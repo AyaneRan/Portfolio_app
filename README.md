@@ -57,6 +57,7 @@ cd Portfolio_app
 bundle install
 rails db:migrate
 rails server
+```
 Access: 👉 http://localhost:3000
 
 💌 Email Preview (Development)
