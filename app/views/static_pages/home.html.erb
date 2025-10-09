@@ -1,1 +1,42 @@
+<% content_for :title, "Showcase" %>
 
+<div class="py-5 text-center">
+  <h1 class="display-5 fw-bold">Showcase Your Work</h1>
+  <p class="lead text-muted">Skills, projects, and story in one place.</p>
+  <div class="d-flex gap-2 justify-content-center">
+    <%= link_to "View Projects", (projects_path rescue "#"), class: "btn btn-primary btn-lg" %>
+    <%= link_to "GitHub", "https://github.com/AyaneRan", class: "btn btn-outline-secondary btn-lg", target: "_blank", rel: "noopener" %>
+  </div>
+</div>
+
+<div class="row g-4 mt-2">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Authentication</h5>
+        <p class="card-text">Sign up / login / reset password with secure sessions.</p>
+        <span class="badge text-bg-primary">Rails 7</span>
+        <span class="badge text-bg-secondary">Action Mailer</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Deployment</h5>
+        <p class="card-text">Deployed on Render with environment variables & PostgreSQL ready.</p>
+        <span class="badge text-bg-info">Render</span>
+        <span class="badge text-bg-success">CI Ready</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Next</h5>
+        <p class="card-text">Microposts, Comments, Likes, Profile editing.</p>
+        <span class="badge text-bg-warning">Roadmap</span>
+      </div>
+    </div>
+  </div>
+</div>
