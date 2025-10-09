@@ -56,12 +56,16 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-group :development do
+group :development, :test do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "letter_opener"
   gem "letter_opener_web"
 end
+
+if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
