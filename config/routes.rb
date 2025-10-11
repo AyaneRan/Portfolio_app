@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
 
   resources :microposts, only: %i[index create destroy]
-  resources :users, only: %i[show edit update], path: "/users"
+
+  
+  resources :users, only: %i[new create show edit update], path: "/users"
 
   
   resources :password_resets, only: %i[new create edit update]

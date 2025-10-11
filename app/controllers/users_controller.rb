@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id])
+    user = User.find(params[:id])
     if user == current_user
       flash[:alert] = "You cannot delete yourself."
     else  
@@ -61,5 +61,9 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
   end
