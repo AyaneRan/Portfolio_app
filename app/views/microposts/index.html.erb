@@ -1,0 +1,16 @@
+<h1>Microposts#index</h1>
+
+
+<%= form_with(model: Micropost.new, local: true) do |f| %>
+  <%= f.text_area :content, placeholder: "What's on your mind?" %>
+  <%= f.submit "Post" %>
+<% end %>
+
+<ul>
+  <% @microposts.each do |micropost| %>
+    <li>
+    <%= micropost.content %> |
+    <%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+    <% end %>
+</ul>

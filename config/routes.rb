@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "microposts/create"
+  get "microposts/destroy"
+  get "microposts/index"
   get "static_pages/home"
   root "static_pages#home"
   get "users/new"
@@ -13,4 +16,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :password_resets, only: %i[new create edit update]
+  resources :microposts, only: %i[create destroy index]
 end

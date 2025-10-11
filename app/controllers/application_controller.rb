@@ -1,33 +1,36 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  helper_method :current_user, :logged_in?
 
- def new; end
-
- def create
-  user = User.find_by(email: params[:session][:email].downcase)
-   if user&.authenticate(params[:session][:password])
-    session[:user_id] = user.id
-    redirect_to user, notice: "Logged in!"
-   else
-    flash.now.alert = "Email or password is invalid"
-    render "new", status: :unprocessable_entity
-   end
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) 
   end
 
-  def destroy
-   session.delete(:user_id)
-   redirect_to root_url, notice: "Logged out!"
+  def logged_in?
+    current_user.present?
+  end
+
+  def require_login
+   unless logged_in?
+    store_location
+    flash[:danger] = "Please log in to continue."
+    redirect_to login_path, status: :see_other
+   end
   end
   
   private
 
   def logged_in_user
-   unless logged_in?
-    store_location
-   flash[:danger] = "Please log in."
-   redirect_to login_url
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+     end
+   end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
-end
 end
 
 
