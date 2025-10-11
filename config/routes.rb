@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
-  get "microposts/create"
-  get "microposts/destroy"
-  get "microposts/index"
+
   get "static_pages/home"
   root "static_pages#home"
-  get "users/new"
-  get "users/show"
-  get "signup", to: "users#new"
+
+  
   get    "/login",  to: "sessions#new"
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  get "signup", to: "users#new"
+
+
+  resources :microposts, only: %i[index create destroy]
+  resources :users, only: %i[show edit update], path: "/users"
+
+  
+  resources :password_resets, only: %i[new create edit update]
+
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
-
-  resources :users
-  resources :password_resets, only: %i[new create edit update]
-  resources :microposts, only: %i[create destroy index]
 end

@@ -1,16 +1,49 @@
-<h1>Microposts#index</h1>
+<div class="container my-4">
+  <div class="row">
+    <!-- 投稿一覧 -->
+    <div class="col-lg-7">
+      <h1 class="h4 mb-3">Microposts</h1>
 
+      <% if @microposts.any? %>
+        <% @microposts.each do |micropost| %>
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <p class="card-text"><%= simple_format(h(micropost.content)) %></p>
 
-<%= form_with(model: Micropost.new, local: true) do |f| %>
-  <%= f.text_area :content, placeholder: "What's on your mind?" %>
-  <%= f.submit "Post" %>
-<% end %>
+              <div class="d-flex justify-content-between align-items-center text-muted small">
+                <span><%= l micropost.created_at, format: :short %></span>
+                <% if micropost.user_id == current_user&.id %>
+                  <%= button_to "Delete",
+                        micropost,
+                        method: :delete,
+                        form: { data: { turbo_confirm: "Delete this micropost?" } },
+                        class: "btn btn-sm btn-outline-danger" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="alert alert-light border">まだ投稿がありません。</div>
+      <% end %>
+    </div>
 
-<ul>
-  <% @microposts.each do |micropost| %>
-    <li>
-    <%= micropost.content %> |
-    <%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-    <% end %>
-</ul>
+    <!-- 投稿フォーム -->
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-header">New Micropost</div>
+        <div class="card-body">
+          <%= form_with(model: Micropost.new, local: true, class: "needs-validation") do |f| %>
+            <div class="mb-3">
+              <%= f.label :content, class: "form-label" %>
+              <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "What's on your mind?" %>
+            </div>
+            <div class="d-flex justify-content-end">
+              <%= f.submit "Post", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
