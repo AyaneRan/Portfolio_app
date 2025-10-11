@@ -1,18 +1,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: 127.0.0.1
-  port: 5432
-  username: postgres
-  password: postgres   # ← ここを今設定したパスと一致させる
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
 
 development:
   <<: *default
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: postgres
   database: portfolio_app_development
 
 test:
   <<: *default
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: postgres
   database: portfolio_app_test
 
 production:
@@ -27,6 +31,11 @@ production:
     pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
 
   queue:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+
+  cache:
     <<: *default
     url: <%= ENV["DATABASE_URL"] %>
     pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
